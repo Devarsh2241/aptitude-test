@@ -1,60 +1,59 @@
 let c = []
 let developarr
-let answer
-let score=0
+let answer = 0
+let score = 0
 
 
 function develop() {
 
     for (let i = 0; i < 9; i++) {
         if (i % 2 != 0) {
-            let b = ["+", "-", "*", "/"]
-            que = Math.round(Math.random() * 3)
+            let b = ["+", "-", "*"]
+            que = Math.round(Math.random() * 2)
             c += b[que]
         }
         else {
-            que = Math.floor(Math.random() * 10) + 1
+            que = Math.round(Math.random() * 10) + 1
             c += que
         }
     }
     developarr = c
     answer = eval(c)
-    document.getElementById('Question').innerHTML = developarr
-    
+    document.getElementById('Question').innerHTML = c
+
+
 }
 develop()
 
 let btn = document.getElementById("btn")
 
 
-
 function check() {
 
-    let Ans = document.getElementById('Answer').value
-    document.getElementById('show1').innerHTML = "Your answer is : " + Ans
-    document.getElementById('show2').innerHTML = "Correct Answer is : " + Math.floor(answer)
-    document.getElementById("Answer").value = "";
-    
+    let Ans = document.getElementById('Answer')
 
-    if (answer == Ans) {
+    if (answer == Ans.value) {
         document.getElementById('show3').innerHTML = "Correct"
-        btn.addEventListener('click', function () {
-            check()
-            c=[]
-            develop()
-        })
+        c = []
+        document.getElementById('show1').innerHTML = "Your answer is : " + Ans.value
+        document.getElementById('show2').innerHTML = "Correct Answer is : " + answer
+        Ans.value = "";
+        develop()
+
     }
     else {
         document.getElementById('show3').innerHTML = "Wrong"
-        btn.addEventListener('click', function () {
-            check()
-            c=[]
-            develop()
-            
-        })
+        c = []
+        document.getElementById('show1').innerHTML = "Your answer is : " + Ans.value
+        document.getElementById('show2').innerHTML = "Correct Answer is : " + answer
+        Ans.value = "";
+        develop()
     }
-
 
 }
 
+
+btn.addEventListener('click', function () {
+    check()
+})
 
