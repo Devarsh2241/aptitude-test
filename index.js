@@ -20,6 +20,7 @@ function develop() {
     developarr = c
     answer = eval(c)
     document.getElementById('Question').innerHTML = c
+    document.getElementById('score').innerHTML=score
 
 
 }
@@ -38,6 +39,8 @@ function check() {
         document.getElementById('show1').innerHTML = "Your answer is : " + Ans.value
         document.getElementById('show2').innerHTML = "Correct Answer is : " + answer
         Ans.value = "";
+        score+=1
+        document.getElementById('score').innerHTML=score
         develop()
 
     }
@@ -47,6 +50,8 @@ function check() {
         document.getElementById('show1').innerHTML = "Your answer is : " + Ans.value
         document.getElementById('show2').innerHTML = "Correct Answer is : " + answer
         Ans.value = "";
+        score-=1
+        document.getElementById('score').innerHTML=score
         develop()
     }
 
